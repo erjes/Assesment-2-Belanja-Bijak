@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Belanja Bijak</string>
+
+    <string name="title_home">Expenses</string>
+    <string name="title_add">Add Record</string>
+    <string name="title_edit">Edit Record</string>
+    <string name="title_compare">Compare Products</string>
+    <string name="title_history">Purchase History</string>
+
+    <string name="label_product_name">Product/Item Name</string>
+    <string name="label_price">Price ($ or Rp)</string>
+    <string name="label_quantity">Quantity (Pcs)</string>
+    <string name="label_category">Expense Category</string>
+    <string name="label_size">Size/Content (gr/ml)</string>
+
+    <string name="cat_primer">Primary (Basic Needs)</string>
+    <string name="cat_sekunder">Secondary (Wants/Supporting)</string>
+    <string name="cat_tersier">Tertiary (Luxury/Entertainment)</string>
+
+    <string name="btn_save">Save Data</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_compare">Calculate Efficiency</string>
+
+    <string name="error_empty_fields">All input fields are required!</string>
+    <string name="dialog_delete_title">Delete Record</string>
+    <string name="dialog_delete_desc">Are you sure you want to delete the expense record for %1$s?</string>
+    <string name="empty_state_text">No purchase records found for this month.</string>
+
+    <string name="compare_subtitle">Shopping Efficiency Ratio Calculator</string>
+    <string name="product_a">Product Option A</string>
+    <string name="product_b">Product Option B</string>
+    <string name="compare_placeholder">Enter the price and size of both product options to find the most economical choice.</string>
+    <string name="result_product_a_cheaper">Product A is more economical! (Rp %1$.2f per unit)</string>
+    <string name="result_product_b_cheaper">Product B is more economical! (Rp %1$.2f per unit)</string>
+    <string name="result_equal">Both product options offer the same economical value.</string>
+</resources>

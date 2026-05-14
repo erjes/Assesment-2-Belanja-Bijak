@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Belanja Bijak</string>
+
+    <string name="title_home">Pengeluaran</string>
+    <string name="title_add">Tambah Catatan</string>
+    <string name="title_edit">Ubah Catatan</string>
+    <string name="title_compare">Bandingkan Produk</string>
+    <string name="title_history">Riwayat Belanja</string>
+
+    <string name="label_product_name">Nama Produk/Barang</string>
+    <string name="label_price">Harga (Rp)</string>
+    <string name="label_quantity">Jumlah (Pcs)</string>
+    <string name="label_category">Kategori Pengeluaran</string>
+    <string name="label_size">Ukuran/Isi (gr/ml)</string>
+
+    <string name="cat_primer">Primer (Kebutuhan Pokok)</string>
+    <string name="cat_sekunder">Sekunder (Keinginan/Pendukung)</string>
+    <string name="cat_tersier">Tersier (Barang Mewah/Hiburan)</string>
+
+    <string name="btn_save">Simpan Data</string>
+    <string name="btn_delete">Hapus</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_compare">Hitung Efisiensi</string>
+
+    <string name="error_empty_fields">Semua kolom input wajib diisi!</string>
+    <string name="dialog_delete_title">Hapus Catatan</string>
+    <string name="dialog_delete_desc">Apakah Anda yakin ingin menghapus catatan pengeluaran untuk %1$s?</string>
+    <string name="empty_state_text">Belum ada catatan belanja di bulan ini.</string>
+
+    <string name="compare_subtitle">Kalkulator Rasio Efisiensi Belanja</string>
+    <string name="product_a">Opsi Produk A</string>
+    <string name="product_b">Opsi Produk B</string>
+    <string name="compare_placeholder">Masukkan nominal harga dan ukuran kedua opsi produk untuk mengetahui pilihan paling hemat.</string>
+    <string name="result_product_a_cheaper">Produk A lebih ekonomis! (Rp %1$.2f per unit)</string>
+    <string name="result_product_b_cheaper">Produk B lebih hemat! (Rp %1$.2f per unit)</string>
+    <string name="result_equal">Kedua opsi produk bernilai ekonomis sama.</string>
+</resources>
