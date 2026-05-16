@@ -34,4 +34,9 @@
     <string name="result_product_a_cheaper">Produk A lebih ekonomis! (Rp %1$.2f per unit)</string>
     <string name="result_product_b_cheaper">Produk B lebih hemat! (Rp %1$.2f per unit)</string>
     <string name="result_equal">Kedua opsi produk bernilai ekonomis sama.</string>
+    <string name="message_delete">Hapus pengeluaran ini?</string>
+
+
+    <string name="list">Tampilan list</string>
+    <string name="grid">Tampilan grid</string>
 </resources>

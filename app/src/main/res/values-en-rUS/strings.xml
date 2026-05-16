@@ -34,4 +34,7 @@
     <string name="result_product_a_cheaper">Product A is more economical! (Rp %1$.2f per unit)</string>
     <string name="result_product_b_cheaper">Product B is more economical! (Rp %1$.2f per unit)</string>
     <string name="result_equal">Both product options offer the same economical value.</string>
+    <string name="message_delete">Delete this spending?</string>
+    <string name="list">List View</string>
+    <string name="grid">Grid View</string>
 </resources>
