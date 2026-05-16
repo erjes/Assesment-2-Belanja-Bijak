@@ -69,14 +69,14 @@ fun PurchaseHistoryScreen(
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.btn_back)
                         )
                     }
                 },
                 actions = {
                     Box {
                         IconButton(onClick = { showMenuFilter = true }) {
-                            Icon(Icons.Default.DateRange, contentDescription = "Filter")
+                            Icon(Icons.Default.DateRange, contentDescription = stringResource(R.string.month_filter))
                         }
                         DropdownMenu(
                             expanded = showMenuFilter,
@@ -101,7 +101,7 @@ fun PurchaseHistoryScreen(
                             } else {
                                 painterResource(id = R.drawable.view_grid)
                             },
-                            contentDescription = "Toggle Layout"
+                            contentDescription = stringResource(R.string.toggle_layout)
                         )
                     }
                 }
@@ -119,6 +119,7 @@ fun PurchaseHistoryScreen(
                 Text(
                     text = stringResource(R.string.empty_state_text),
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     style = MaterialTheme.typography.bodyLarge
                 )
             }

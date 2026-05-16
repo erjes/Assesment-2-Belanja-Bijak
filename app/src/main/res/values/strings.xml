@@ -21,11 +21,13 @@
     <string name="btn_delete">Hapus</string>
     <string name="btn_cancel">Batal</string>
     <string name="btn_compare">Hitung Efisiensi</string>
+    <string name="btn_back">Kembali</string>
 
     <string name="error_empty_fields">Semua kolom input wajib diisi!</string>
     <string name="dialog_delete_title">Hapus Catatan</string>
     <string name="dialog_delete_desc">Apakah Anda yakin ingin menghapus catatan pengeluaran untuk %1$s?</string>
     <string name="empty_state_text">Belum ada catatan belanja di bulan ini.</string>
+    <string name="toast_no_update">Tidak ada data yang diubah</string>
 
     <string name="compare_subtitle">Kalkulator Rasio Efisiensi Belanja</string>
     <string name="product_a">Opsi Produk A</string>
@@ -34,9 +36,18 @@
     <string name="result_product_a_cheaper">Produk A lebih ekonomis! (Rp %1$.2f per unit)</string>
     <string name="result_product_b_cheaper">Produk B lebih hemat! (Rp %1$.2f per unit)</string>
     <string name="result_equal">Kedua opsi produk bernilai ekonomis sama.</string>
-    <string name="message_delete">Hapus pengeluaran ini?</string>
+    <string name="message_delete">Hapus pengeluaran ini?</string>\
+    <string name="restore_data">Pulihkan Data</string>
+    <string name="permantent_delete">Hapus Permanen</string>
 
+    <string name="recycle_bin">Recycle Bin</string>
+    <string name="empty_recycle_bin">Recycle Bin Kosong</string>
 
+    <string name="open_recycle_bin">Buka Recycle Bin</string>
+    <string name="month_filter">Filter Bulan</string>
+    <string name="add_spending">Tambah Pengeluaran</string>
+
+    <string name="toggle_layout">Ubah Layout</string>
     <string name="list">Tampilan list</string>
     <string name="grid">Tampilan grid</string>
 </resources>

@@ -11,6 +11,7 @@ data class Pengeluaran(
     val namaBarang: String,
     val harga: Double,
     val jumlah: Int,
-    val tanggal: String, // Format simpan: YYYY-MM
-    val kategori: String // PRIMER, SEKUNDER, TERSIER
+    val tanggal: String,
+    val kategori: String,
+    val isDeleted: Boolean = false
 )

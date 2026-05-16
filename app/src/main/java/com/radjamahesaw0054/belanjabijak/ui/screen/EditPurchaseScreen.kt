@@ -76,7 +76,7 @@ fun EditPurchaseScreen(
             onDismissRequest = { openDialogConfirm = false },
             onConfirmation = {
                 openDialogConfirm = false
-                viewModel.hapusPengeluaran(itemExisting)
+                viewModel.pindahkanKeRecycleBin(itemExisting)
                 navController.popBackStack()
             }
         )
@@ -195,7 +195,7 @@ fun EditPurchaseScreen(
                         if (isDataSame) {
                             Toast.makeText(
                                 context,
-                                "Tidak ada data yang diubah",
+                                R.string.toast_no_update,
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {

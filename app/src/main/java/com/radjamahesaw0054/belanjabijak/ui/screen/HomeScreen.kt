@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,6 +28,9 @@ import com.radjamahesaw0054.belanjabijak.navigation.Screen
 import com.radjamahesaw0054.belanjabijak.ui.util.SettingsPreferences
 import com.radjamahesaw0054.belanjabijak.ui.util.ViewModelFactory
 import com.radjamahesaw0054.belanjabijak.ui.viewmodel.MainViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,15 +47,53 @@ fun HomeScreen(
 
     val pengeluaranList by viewModel.listPengeluaran.collectAsState()
     val bulanAktif by viewModel.filterBulan.collectAsState()
-
     val isGridLayout by viewModel.isGrid.collectAsState()
 
+    var showMenuFilter by remember { mutableStateOf(false) }
+
+    val listOpsiBulan = remember {
+        val opsi = mutableListOf<String>()
+        val format = SimpleDateFormat("yyyy-MM", Locale.getDefault())
+        val kalender = Calendar.getInstance()
+        (0 until 6).forEach { _ ->
+            opsi.add(format.format(kalender.time))
+            kalender.add(Calendar.MONTH, -1)
+        }
+        opsi
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("${stringResource(R.string.title_home)} ($bulanAktif)") },
                 actions = {
+                    Box {
+                        IconButton(onClick = { showMenuFilter = true }) {
+                            Icon(Icons.Default.DateRange, contentDescription = stringResource(R.string.month_filter))
+                        }
+                        DropdownMenu(
+                            expanded = showMenuFilter,
+                            onDismissRequest = { showMenuFilter = false }
+                        ) {
+                            listOpsiBulan.forEach { bulan ->
+                                DropdownMenuItem(
+                                    text = { Text(bulan) },
+                                    onClick = {
+                                        viewModel.simpanFilterBulan(bulan)
+                                        showMenuFilter = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+
+                    IconButton(onClick = { navController.navigate(Screen.RecycleBin.route) }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = stringResource(R.string.open_recycle_bin),
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
 
                     IconButton(onClick = { viewModel.simpanLayoutStatus(!isGridLayout) }) {
                         Icon(
@@ -59,7 +102,7 @@ fun HomeScreen(
                             } else {
                                 painterResource(id = R.drawable.view_grid)
                             },
-                            contentDescription = "Toggle Layout"
+                            contentDescription = stringResource(R.string.toggle_layout)
                         )
                     }
 
@@ -68,7 +111,7 @@ fun HomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { navController.navigate(Screen.AddPurchase.route) }) {
-                Icon(Icons.Default.Add, contentDescription = "Add")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_spending))
             }
         },
         modifier = modifier
@@ -83,11 +126,11 @@ fun HomeScreen(
                 Text(
                     text = stringResource(R.string.empty_state_text),
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
         } else {
-            // Pengondisian komponen Layout berdasarkan preferensi user
             if (isGridLayout) {
                 LazyVerticalStaggeredGrid(
                     columns = StaggeredGridCells.Fixed(2),

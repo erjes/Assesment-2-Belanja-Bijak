@@ -22,11 +22,13 @@
     <string name="btn_cancel">Cancel</string>
     <string name="btn_compare">Calculate Efficiency</string>
 
+    <string name="btn_back">Back</string>
     <string name="error_empty_fields">All input fields are required!</string>
     <string name="dialog_delete_title">Delete Record</string>
     <string name="dialog_delete_desc">Are you sure you want to delete the expense record for %1$s?</string>
     <string name="empty_state_text">No purchase records found for this month.</string>
 
+    <string name="toast_no_update">No update</string>
     <string name="compare_subtitle">Shopping Efficiency Ratio Calculator</string>
     <string name="product_a">Product Option A</string>
     <string name="product_b">Product Option B</string>
@@ -35,6 +37,14 @@
     <string name="result_product_b_cheaper">Product B is more economical! (Rp %1$.2f per unit)</string>
     <string name="result_equal">Both product options offer the same economical value.</string>
     <string name="message_delete">Delete this spending?</string>
+    <string name="add_spending">Add Spending</string>
+    <string name="toggle_layout">Toggle Layout</string>
     <string name="list">List View</string>
     <string name="grid">Grid View</string>
+    <string name="restore_data">Restore Data</string>
+    <string name="permantent_delete">Permantent Delete</string>
+    <string name="recycle_bin">Recycle Bin</string>
+    <string name="empty_recycle_bin">Recycle Bin is empty</string>
+    <string name="open_recycle_bin">Open Recycle Bin</string>
+    <string name="month_filter">Month FIlter</string>
 </resources>

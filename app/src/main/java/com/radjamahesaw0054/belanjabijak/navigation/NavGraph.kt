@@ -13,6 +13,7 @@ import com.radjamahesaw0054.belanjabijak.ui.screen.CompareProductScreen
 import com.radjamahesaw0054.belanjabijak.ui.screen.EditPurchaseScreen
 import com.radjamahesaw0054.belanjabijak.ui.screen.HomeScreen
 import com.radjamahesaw0054.belanjabijak.ui.screen.PurchaseHistoryScreen
+import com.radjamahesaw0054.belanjabijak.ui.screen.RecycleBinScreen
 
 @Composable
 fun SetupNavGraph(
@@ -50,6 +51,10 @@ fun SetupNavGraph(
 
         composable(route = Screen.CompareProduct.route) {
             CompareProductScreen(navController = navController)
+        }
+
+        composable(route = Screen.RecycleBin.route) {
+            RecycleBinScreen(navController = navController)
         }
     }
 }

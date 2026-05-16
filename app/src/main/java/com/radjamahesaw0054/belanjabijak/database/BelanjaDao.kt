@@ -17,8 +17,8 @@ interface BelanjaDao {
     @Delete
     suspend fun deletePengeluaran(pengeluaran: Pengeluaran)
 
-    @Query("SELECT * FROM pengeluaran WHERE tanggal = :bulanTahun ORDER BY id DESC")
-    fun getPengeluaranBerdasarkanBulan(bulanTahun: String): Flow<List<Pengeluaran>>
+    @Query("SELECT * FROM pengeluaran WHERE tanggal LIKE :bulan || '%' AND isDeleted = 0 ORDER BY id DESC")
+    fun getPengeluaranBerdasarkanBulan(bulan: String): Flow<List<Pengeluaran>>
 
     @Insert
     suspend fun insertKeranjang(item: KeranjangBelanja)
@@ -28,4 +28,10 @@ interface BelanjaDao {
 
     @Delete
     suspend fun deleteKeranjang(item: KeranjangBelanja)
+
+    @Query("SELECT * FROM pengeluaran WHERE isDeleted = 1 ORDER BY id DESC")
+    fun getRecycleBin(): Flow<List<Pengeluaran>>
+
+    @Delete
+    suspend fun deletePermanen(pengeluaran: Pengeluaran)
 }

@@ -3,10 +3,10 @@ package com.radjamahesaw0054.belanjabijak.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.radjamahesaw0054.belanjabijak.database.BelanjaDao
-import com.radjamahesaw0054.belanjabijak.model.KeranjangBelanja
 import com.radjamahesaw0054.belanjabijak.model.Pengeluaran
 import com.radjamahesaw0054.belanjabijak.ui.util.SettingsPreferences
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -30,6 +30,7 @@ class MainViewModel(
         initialValue = currentMonth
     )
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val listPengeluaran: StateFlow<List<Pengeluaran>> = filterBulan.flatMapLatest { bulan ->
         dao.getPengeluaranBerdasarkanBulan(bulan)
     }.stateIn(
@@ -38,11 +39,6 @@ class MainViewModel(
         initialValue = emptyList()
     )
 
-    val listKeranjang: StateFlow<List<KeranjangBelanja>> = dao.getAllKeranjang().stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = emptyList()
-    )
 
     fun tambahPengeluaran(nama: String, harga: Double, jumlah: Int, kategori: String, tanggal: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -92,6 +88,31 @@ class MainViewModel(
     fun simpanLayoutStatus(isGrid: Boolean) {
         viewModelScope.launch(Dispatchers.Main) {
             preferences.saveLayoutStatus(isGrid)
+        }
+    }
+
+
+    val listRecycleBin: StateFlow<List<Pengeluaran>> = dao.getRecycleBin().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
+
+    fun pindahkanKeRecycleBin(pengeluaran: Pengeluaran) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.updatePengeluaran(pengeluaran.copy(isDeleted = true))
+        }
+    }
+
+    fun pulihkanDariRecycleBin(pengeluaran: Pengeluaran) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.updatePengeluaran(pengeluaran.copy(isDeleted = false))
+        }
+    }
+
+    fun hapusPermanenPengeluaran(pengeluaran: Pengeluaran) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.deletePermanen(pengeluaran)
         }
     }
 }

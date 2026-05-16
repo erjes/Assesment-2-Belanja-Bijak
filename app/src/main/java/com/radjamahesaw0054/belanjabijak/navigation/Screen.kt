@@ -10,4 +10,5 @@ sealed class Screen(val route: String) {
     }
     data object PurchaseHistoryScreen: Screen("PurchaseHistoryScreen")
     data object CompareProduct: Screen("CompareProductScreen")
+    data object RecycleBin: Screen("RecycleBinScreen")
 }
