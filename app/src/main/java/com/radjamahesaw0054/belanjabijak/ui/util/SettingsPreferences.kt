@@ -14,6 +14,7 @@ class SettingsPreferences(private val context: Context) {
     companion object {
         val FILTER_BULAN_KEY = stringPreferencesKey("filter_bulan")
         val IS_GRID_KEY = booleanPreferencesKey("is_grid")
+        val IS_DARK_MODE_KEY = booleanPreferencesKey("is_dark_mode")
     }
 
     val getBulanFilter: Flow<String> = context.dataStore.data.map { preferences ->
@@ -33,6 +34,16 @@ class SettingsPreferences(private val context: Context) {
     val saveLayoutStatus: suspend (Boolean) -> Unit = { isGrid ->
         context.dataStore.edit { preferences ->
             preferences[IS_GRID_KEY] = isGrid
+        }
+    }
+
+    val getThemeStatus: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[IS_DARK_MODE_KEY] ?: false // Default false (Light Mode)
+    }
+
+    suspend fun saveThemeStatus(isDarkMode: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[IS_DARK_MODE_KEY] = isDarkMode
         }
     }
 }

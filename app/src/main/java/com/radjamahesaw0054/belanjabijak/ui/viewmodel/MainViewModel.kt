@@ -115,4 +115,15 @@ class MainViewModel(
             dao.deletePermanen(pengeluaran)
         }
     }
-}
+
+    val isDarkMode: StateFlow<Boolean> = preferences.getThemeStatus.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = false
+    )
+
+    fun simpanThemeStatus(isDarkMode: Boolean) {
+        viewModelScope.launch(Dispatchers.Main) {
+            preferences.saveThemeStatus(isDarkMode)
+        }
+    }}

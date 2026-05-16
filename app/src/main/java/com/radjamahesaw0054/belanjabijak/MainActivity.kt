@@ -13,24 +13,37 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.radjamahesaw0054.belanjabijak.database.BelanjaDb
 import com.radjamahesaw0054.belanjabijak.navigation.Screen
 import com.radjamahesaw0054.belanjabijak.navigation.SetupNavGraph
 import com.radjamahesaw0054.belanjabijak.ui.theme.BelanjaBijakTheme
+import com.radjamahesaw0054.belanjabijak.ui.util.SettingsPreferences
+import com.radjamahesaw0054.belanjabijak.ui.util.ViewModelFactory
+import com.radjamahesaw0054.belanjabijak.ui.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BelanjaBijakTheme {
+            val database = BelanjaDb.getInstance(applicationContext)
+            val preferences = SettingsPreferences(applicationContext)
+            val factory = ViewModelFactory(database.dao, preferences)
+
+            val viewModel: MainViewModel = viewModel(factory = factory)
+            val isDarkMode by viewModel.isDarkMode.collectAsState()
+
+            BelanjaBijakTheme(darkTheme = isDarkMode) {
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route

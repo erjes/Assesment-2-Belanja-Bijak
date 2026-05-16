@@ -43,6 +43,7 @@
     <string name="grid">Grid View</string>
     <string name="restore_data">Restore Data</string>
     <string name="permantent_delete">Permantent Delete</string>
+    <string name="toggle_theme">Toggle Theme</string>
     <string name="recycle_bin">Recycle Bin</string>
     <string name="empty_recycle_bin">Recycle Bin is empty</string>
     <string name="open_recycle_bin">Open Recycle Bin</string>

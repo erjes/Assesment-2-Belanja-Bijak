@@ -48,6 +48,7 @@ fun HomeScreen(
     val pengeluaranList by viewModel.listPengeluaran.collectAsState()
     val bulanAktif by viewModel.filterBulan.collectAsState()
     val isGridLayout by viewModel.isGrid.collectAsState()
+    val isDarkMode by viewModel.isDarkMode.collectAsState()
 
     var showMenuFilter by remember { mutableStateOf(false) }
 
@@ -87,6 +88,17 @@ fun HomeScreen(
                         }
                     }
 
+                    IconButton(onClick = { viewModel.simpanThemeStatus(!isDarkMode) }) {
+                        Icon(
+                            painter = if (isDarkMode) {
+                                painterResource(id = R.drawable.ic_light_mode)
+                            } else {
+                                painterResource(id = R.drawable.ic_dark_mode)
+                            },
+                            contentDescription = stringResource(R.string.toggle_theme)
+                        )
+                    }
+
                     IconButton(onClick = { navController.navigate(Screen.RecycleBin.route) }) {
                         Icon(
                             imageVector = Icons.Default.Delete,
@@ -105,7 +117,6 @@ fun HomeScreen(
                             contentDescription = stringResource(R.string.toggle_layout)
                         )
                     }
-
                 }
             )
         },
